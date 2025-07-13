@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PDF and Text Pattern Reader</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     
     <style>
         textarea::placeholder{
@@ -21,16 +23,18 @@
 
 <section>
 
-     <form action="/application" id="fileForm" method="post" enctype="multipart/form-data">
+     <form action="/application" id="fileForm" method="POST" enctype="multipart/form-data">
          {% csrf_token %}
         <label for="file">Choose a file:</label>
-        <input type="file" id="file" name="file" required accept="pdf, txt">
-        <br><br>
+        <input type="file" id="file" name="file" required accept=".pdf, .txt">
+         <br>
         <button type="submit">Upload</button>
     </form>
 
-    <label> OR copy and paste the pattern here: </label>
-    <form>
+    <br><br>
+    
+    <label style="font-size:24px "> OR copy and paste the pattern here: </label>
+    <form id="textResult" name="textResult" onsubmit="doThing()">
         <textarea type="text" id="textResult2" name="textResult" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
         <br>
         <button type="submit">Submit</button>
@@ -41,8 +45,14 @@
     
     <script>
         //for text input.
-        var x = document.getElementById("textResult")
-        document.getElementById("resultLocation").innerText = x
+        document.getElementById("textResult").addEventListener("submit", function(event){
+            event.preventDefault()
+                const textarea = document.getElementById("textResult2");
+                const output = textarea.value
+                document.getElementById("resultLocation").innerHTML = output;
+            })
+        
+        
         
     </script>
     
