@@ -3,8 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    
+    
+    <style>
+    input {
+        font-size: 16px; 
+        padding: 10px; 
+    }
+  input::placeholder {
+    font-size: 24px;
+  }
+    </style>
+
+    
 </head>
 <body>
+
+
+<section>
+    
+     <form action="/application" id="fileForm" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        <label for="file">Choose a file:</label>
+        <input type="file" id="file" name="file" required accept="pdf, txt">
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+    
+    <p> OR copy and paste the pattern here: </p>
+    
+    <form>
+        <input type = "text" id="text" placeholder="pattern">
+        <button type="submit">Submit</button>
+        
+    </form>
+    
+    <script>
+    document.getElementById('fileForm').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+      console.log('File content:', e.target.result); // File content as text
+    };
+  }
+});
+    </script>
+
+    
+</section>
 
 </body>
 </html>
