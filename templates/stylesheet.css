@@ -1,15 +1,28 @@
 
 *{
 margin: 0;
-    background-color: antiquewhite;
+    background-color: #f8eee5;
 }
 header {
     width: 100%;
-    height: 100%;
     display: block;
     background-color: #D76EBF;
+    color: #240c09;
     font-family: 'Helvetica', 'Arial', sans-serif;
+    padding: 30px;
+    vertical-align: center;
 }
+
+headerlinks {
+    text-align: right;
+}
+
+h2 {
+    background-color: transparent;
+    color: #240c09;
+}
+
+
 button {
     color: #ffffff;
     background-color: #D76EBF;
@@ -22,6 +35,18 @@ button:hover {
     color: #ffffff;
     background-color: #EC88B4;
     border: 1px solid #EC88B4;
+}
+button2 {
+    color: #ffffff;
+    background-color: transparent;
+    font-size: 10px;
+    padding: 15px 50px;
+    cursor: pointer;
+    vertical-align: bottom;
+}
+button2:hover {
+    text-decoration: underline;
+    text-underline: #f8eee5;
 }
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
