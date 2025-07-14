@@ -5,7 +5,7 @@
     <title>PDF and Text Pattern Reader</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    
+
     <style>
         textarea::placeholder{
             font-size: 24px;
@@ -13,15 +13,19 @@
         textarea{
             font-size: 24px;
         }
-        
+
     </style>
 
 
 </head>
 <body>
 
+<header>
+    <h1>Accraft</h1>
+</header>
 
-<section>
+<main>
+<div>
 
      <form action="/application" id="fileForm" method="POST" enctype="multipart/form-data">
          {% csrf_token %}
@@ -30,48 +34,61 @@
          <br>
         <button type="submit">Upload</button>
     </form>
+    </div>
 
     <br><br>
-    
+
+    <div>
     <label style="font-size:24px "> OR copy and paste the pattern here: </label>
-    <form id="textResult" name="textResult" onsubmit="doThing()">
+    <form id="textResult" name="textResult">
         <textarea type="text" id="textResult2" name="textResult" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
         <br>
         <button type="submit">Submit</button>
     </form>
-    
-    <p id="resultLocation"> This is where the results go</p>
-    
-    
+
+        <div id="resultLocation">
+    <pre id="result"> This is where the results go</pre>
+            
+            </div>
+
+
     <script>
         //for text input.
         document.getElementById("textResult").addEventListener("submit", function(event){
             event.preventDefault()
                 const textarea = document.getElementById("textResult2");
                 const output = textarea.value
-                document.getElementById("resultLocation").innerHTML = output;
+                console.log(typeof output)
+                changeAndDisplay()
             })
         
         
-        
+        function changeAndDisplay(){
+            document.getElementById("result").innerHTML = output;
+
+        }
     </script>
     
     
+    
+
+
 
     <script>
-    document.getElementById('fileForm').addEventListener('change', function(event) {
+    document.getElementById('fileForm').addEventListener('submit', function(event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
-      console.log('File content:', e.target.result); 
+      console.log('File content:', e.target.result);
     };
   }
 });
     </script>
 
 
-</section>
+</div>
+</main>
 
 </body>
 </html>
