@@ -24,5 +24,7 @@ urlpatterns = [
 
     path('', views.index),
 
-    path('application', views.application)
+    path('application', views.application),
+
+    path('about', views.about),
 ]

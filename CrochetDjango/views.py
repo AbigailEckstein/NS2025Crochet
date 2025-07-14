@@ -8,3 +8,6 @@ def index(request):
 
 def application(request):
     return render(request, "application.html")
+
+def about(request):
+    return render(request, "about.html")
