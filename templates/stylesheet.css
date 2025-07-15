@@ -15,6 +15,7 @@ header {
 
 headerlinks {
     text-align: right;
+    background-color: transparent;
 }
 
 h2 {
