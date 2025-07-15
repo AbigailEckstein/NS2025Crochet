@@ -50,8 +50,8 @@
 
     <div>
     <label style="font-size:24px "> OR copy and paste the pattern here: </label>
-    <form id="textResult" name="textResult">
-        <textarea type="text" id="textResult2" name="textResult" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
+    <form id="textForm" name="textForm">
+        <textarea type="text" id="patternText" name="patternText" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
         <br>
         <button type="submit">Submit</button>
     </form>
@@ -60,27 +60,28 @@
     <pre id="result"> This is where the results go</pre>
             
             </div>
+        
 
-
-    <script>
+    <script type="module">
+        let dictionary = fetch('/static/abbreviations.json')
+        
         //for text input.
-        document.getElementById("textResult").addEventListener("submit", function(event){
+        document.getElementById("textForm").addEventListener("submit", function(event){
             event.preventDefault()
-                const textarea = document.getElementById("textResult2");
-                const output = textarea.value
-                console.log(typeof output)
-                changeAndDisplay()
+                const textarea = document.getElementById("patternText");
+                let output = textarea.value
+                changeAndDisplay(output)
             })
         
         
-          import dictionary from 'abbreviations.json'
         function changeAndDisplay(output) {
-            console.log("hiiii")
+            console.log(dictionary)
             for (const key in dictionary) {
                 let regex = new RegExp('\\b' + key + '\\b', 'g')
                 console.log(regex)
-                output.replace(regex, dictionary(key))
+                output = output.replace(regex, dictionary[key])
             }
+           
             document.getElementById("result").innerHTML = output;
 
         }
