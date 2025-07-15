@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>PDF and Text Pattern Reader</title>
-    <link rel = "stylesheet" href = "stylesheet.css">
+    
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 
@@ -71,7 +73,14 @@
             })
         
         
-        function changeAndDisplay(){
+          import dictionary from 'abbreviations.json'
+        function changeAndDisplay(output) {
+            console.log("hiiii")
+            for (const key in dictionary) {
+                let regex = new RegExp('\\b' + key + '\\b', 'g')
+                console.log(regex)
+                output.replace(regex, dictionary(key))
+            }
             document.getElementById("result").innerHTML = output;
 
         }
