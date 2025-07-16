@@ -80,13 +80,24 @@
         
         
         function changeAndDisplay(output) {
-            console.log(output)
-            for (const key in dictionary) {
+            for (const key in dictionary) { //for each abbreviation, check and replace
                 let regex = new RegExp( "\\b" + key + "\\b", 'gi')
-                console.log(regex)
                 output = output.replace(regex, dictionary[key])
-                console.log(output)
             }
+            //for (let sc=0; i<specialcases.length; i++){
+            //    output = output.replace(specialcases[sc], )
+            //}
+            
+            
+            let chNum = new RegExp("ch" + "\\d+")
+            console.log(chNum)
+            output = output.replace(chNum, "chain" + "\$1")
+            
+            
+            
+            
+            
+            
            
             document.getElementById("result").innerHTML = output;
 
@@ -134,7 +145,7 @@
 "BPtr":	"back post treble crochet",
 "CC":	"contrasting color",
 "ch":	"chain stitch",
-"ch-":	"chain space number",
+"ch-":	"chain number",
 "ch-sp":	"chain space",
 "CL":	"cluster",
 "cont":	"continue",
@@ -156,8 +167,12 @@
   "FPsc": "front post single crochet",
   "FPtr": "front post treble crochet",
   "hdc": "half double crochet",
-  "hdc2tog": "half double crochet 2 stitches together",
+  "hdc2tog": "half double crochet 2 stitches together", 
+            "hdc3tog": "half double crochet 3 stitches together",
+            "hdc4tog": "half double crochet 4 stitches together",
+
   "inc": "increase",
+            "incr": "increase",
   "lp": "loop",
   "m": "marker",
   "MC": "main color",
@@ -175,6 +190,10 @@
   "rs": "right side",
   "sc": "single crochet",
   "sc2tog": "single crochet 2 stitches together",
+            "sc3tog": "single crochet 3 stitches together",
+            "sc4tog": "single crochet 4 stitches together",
+            "sc5tog": "single crochet 5 stitches together",
+            "sc6tog": "single crochet 6 stitches together",
 "sh":	"shell",
   "sk": "skip",
 "sl st":	"slip stitch", 
@@ -183,6 +202,8 @@
   "sl m": "slip marker",
 "sp": "space",
 "st":"stitch",
+            "sts": "stitches",
+            "st(s)": "stitch or stitches",
   "tbl":
   "through back loop",
   "tch": "turning chain",
@@ -193,8 +214,93 @@
 "trtr":	"triple treble crochet",
 "WS":	"wrong side",
 "yo":	"yarn over",
-"yoh":	"yarn over hook"
+"yoh":	"yarn over hook",
+    };
+    
+    let knitDictionary = {
+        "alt":	"alternate",
+"approx":	"approximately",
+"beg":	"beginning",
+"bet":	"between",
+"BO":	"bind off",
+"byo":	"backward yarn over",
+"CC":	"contrasting color", 
+        "cn":	"cable needle",
+"CO":	"cast on",
+"cont":	"continue",
+"dec":	"decrease",
+"dpn":	"double-pointed needles",
+"foll":	"follow",
+"inc":	"increase",
+"k":	"knit",
+ "kn": "knit",       
+"k1B":	"knit stitch in row below",
+        "kn1B": "knit stitch in row below",
+"kfb":	"knit front and back",
+   "ksp":     "knit, slip, pass",
+"k2tog":	"knit 2 stitches together",
+"kwise":	"knitwise",
+        "knwise": "knitwise",
+"LH":	"left hand",
+"lp":	"loop",
+"m":	"marker",
+"M1": 	"make one stitch knitwise",
+        "M1K": "make one stitch knitwise",
+"M1R":	"make one right",
+"M1L":	"make one left",
+"M1p":	"make one purlwise",
+"M1rp":	"make one right purlwise",
+"M1lp":	"make one left purlwise",
+"MC":	"main color",
+"p":	"purl",
+"pat":	"pattern",
+        "patt": "pattern",
+"pfb": "purl front and back",	
+"pm":	"place marker",
+"p2tog":	"purl 2 stitches together", 
+"prev":	"previous",
+"psso":	"pass slipped stitch over",
+"p2sso":	"pass 2 slipped stitches over",
+"pwise":	"purlwise",
+"rem":	"remaining",
+"rep":	"repeat",
+"rev St st":	"reverse stockinette stitch",
+"RH":	"right hand",
+"rnd":	"round",
+"RS":	"right side",
+"SKP": "slip one stitch, knit one stitch, then pass slipped stitches over",
+ "SK2P": "slip one stitch, knit two together, then pass slipped stitches over",       
+"sl":	"slip",
+"sl1k":	"slip 1 knitwise",
+"sl1p":	"slip 1 purlwise",
+"sl st":	"slip stitch",
+"sm":	"slip marker",
+"ssk":	"slip 2 stitches knitwise",
+"ssp":	"slip, slip, purl",
+"sssk":	"slip 3 stitches and knit all three together",
+"sssp": "slip 3, purl slip stitches together",
+"S2KP2":	"slip 2 stitches as if to knit 2 together, knit 1, pass 2 slipped stitches over knit stitch",
+"SSPP2":	"slip, slip, purl, pass 2",
+"st":	"stitch",
+"St st":	"stockinette stitch",
+"tbl":	"through back loop",
+"tfl":	"through front loop",
+"tog":	"together",
+"WS":	"wrong side",
+"w&t":	"wrap and turn",
+"wyib":	"with yarn in back",
+"wyif":	"with yarn in front",
+"yb":	"yarn back",
+"yfwd":	"yarn forward",
+        "yf": "yarn forward",
+"yo":	"yarn over",
+"yon":	"yarn over needle",
+"yrn":	"yarn round needle",
     }
+    
+    let specialcases = [
+    ]
+    
     
 </script>
 </html>
