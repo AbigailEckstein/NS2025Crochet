@@ -1,57 +1,101 @@
 
 *{
 margin: 0;
-    background-color: #f8eee5;
+    background-color: #fff3f3;
 }
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     display: block;
-    background-color: #D76EBF;
+    background-color: #f161ae;
     color: #240c09;
     font-family: 'Helvetica', 'Arial', sans-serif;
-    padding: 30px;
+    padding: 10px;
     vertical-align: center;
 }
 
+.container {
+    background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+img {
+    background-color: transparent;
+    float: left;
+
+}
+
 headerlinks {
+    position: fixed;
+    z-index: 1;
+    top: 10px;
+    right: 0;
     text-align: right;
     background-color: transparent;
 }
 
 h2 {
     background-color: transparent;
-    color: #240c09;
+    color: #fff3f3;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: bolder;
+    font-size: 40px;
 }
 
+h3 {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: transparent;
+    color: #fff3f3;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h4 {
+    background-color: transparent;
+    color: #240c09;
+    font-size: 24px;
+}
 
 button {
-    color: #ffffff;
-    background-color: #D76EBF;
+    color: #fff3f3;
+    background-color: #f161ae;
     font-size: 19px;
-    border: 1px solid #D76EBF;
+    border: 1px solid #f161ae;
     padding: 15px 50px;
     cursor: pointer
 }
+
 button:hover {
-    color: #ffffff;
+    color: #fff3f3;
     background-color: #EC88B4;
     border: 1px solid #EC88B4;
 }
+
 button2 {
-    color: #ffffff;
+    color: #fff3f3;
     background-color: transparent;
-    font-size: 10px;
+    font-size: 15px;
     padding: 15px 50px;
     cursor: pointer;
     vertical-align: bottom;
 }
+
 button2:hover {
     text-decoration: underline;
-    text-underline: #f8eee5;
+    text-underline: #fff3f3;
+    font-weight: bold;
 }
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     color: #240c09;
     font-size: 14pt;
-    background-color: #FAFAFA;
+    background-color: #fff3f3;
 }
