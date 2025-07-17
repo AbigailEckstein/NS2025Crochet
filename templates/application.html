@@ -60,7 +60,8 @@
         <br>
         <textarea type="text" id="patternText" name="patternText" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
         <br>
-
+        <input type="checkbox" id="abbrevToggler">
+        <label for="abbrevToggler">Abbreviations (Recommended to be off)</label>
 
         <br>
         <button type="submit" aria-label="submit the text to the program"> Generate</button>
@@ -68,10 +69,8 @@
 
         <div>
             <br>
-            <button 
-            type="button" value="Play Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
-            <button 
-            type="button" value="Stop Audio" style="background-color: black; align-items: center" id="stopAudio" >Stop Audio</button>        </div>
+            <button
+            type="button" value="Play/Stop Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
 
         <section id="resultLocation" class="container" aria-label="Generated result" style="padding-top: 25px">
 
@@ -85,8 +84,8 @@
 
 
             <div style="padding-top: 10px">
-                <button>Save to .TXT</button>
-                <button>Save to .PDF </button>
+                <a id="textSave" href="javascript:void(0);">Save to .TXT</a>
+                <a id="pdfSave" href="javascript:void(0)">Save to .PDF </a>
             </div>
 
 
@@ -101,15 +100,31 @@
             event.preventDefault()
                 const textarea = document.getElementById("patternText");
                 let output = textarea.value
+                let genRes
                 event.preventDefault()
-                let genRes = changeAndDisplay(output)
-
-                event.preventDefault()
-                document.getElementById("result").innerHTML = genRes;
-                tts(genRes)
-
+                if(document.getElementById("abbrevToggler").checked){
+                    event.preventDefault()
+                    genRes = output
+                    onSubmit(genRes)
+                    
+                }
+                else {
+                    genRes = changeAndDisplay(output)
+                    event.preventDefault()
+                    onSubmit(genRes)
+                    
+                }
 
             })
+
+        function onSubmit(text){
+            document.getElementById("result").innerHTML = text;
+            
+            tts(text)
+            saveTXT(text)
+            savePDF(text)
+
+        }
         
         
         function changeAndDisplay(output) {
@@ -127,23 +142,51 @@
             output = output.replace(chNum, "chain" + "\$1")
             return output
         }
-        
-        
+
+
         function tts(text){
             const playButton =  document.getElementById("playAudio");
-            const stopButton = document.getElementById("stopAudio")
 
             playButton.onclick = function(){
                 if(responsiveVoice.isPlaying()){
                     responsiveVoice.cancel()
                 }
                 else{
-                
+
                 responsiveVoice.speak(text)}
             }
+
+        }
+
+        function saveTXT(text) {
+            const date = new Date();
+            var fileName = "My Pattern" + date.getMonth() + "_" + date.getDate();
+            var fileContent = text;
+            var myFile = new Blob([fileContent], {type: 'text/plain'});
             
-           
+            const objURL = window.URL.createObjectURL(myFile)
+            const link = document.getElementById("textSave")
+            link.setAttribute('href', objURL)
+
+            link.setAttribute('download', fileName)
             
+        }
+        
+        
+        function savePDF(text){
+            
+            
+            
+            const date = new Date();
+            var fileName = "My Pattern" + date.getMonth() + "_" + date.getDate();
+            var fileContent = text;
+            var myFile = new Blob([fileContent], {type: 'application/pdf'});
+            
+            const objURL = window.URL.createObjectURL(myFile)
+            const link = document.getElementById("pdfSave")
+            link.setAttribute('href', objURL)
+
+            link.setAttribute('download', fileName)
         }
         
         
