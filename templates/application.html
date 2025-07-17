@@ -20,11 +20,16 @@
         }
 
     </style>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=zvfE8Dm2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js">
+    </script>
+    </script>
 
 
 </head>
 <body>
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=zvfE8Dm2"></script>
+
 
 
 <header type = "header" name = "h1">
@@ -174,19 +179,22 @@
         
         
         function savePDF(text){
+            let pdfButton = document.getElementById("pdfSave")
+            pdfButton.addEventListener("click", function(event){
+                event.preventDefault()
+                const doc = {
+                    content:[
+                        {text: text}
+                    ]
+                    
+                }
+                pdfMake.createPdf(doc).download('text.pdf')
+            })
             
             
             
-            const date = new Date();
-            var fileName = "My Pattern" + date.getMonth() + "_" + date.getDate();
-            var fileContent = text;
-            var myFile = new Blob([fileContent], {type: 'application/pdf'});
             
-            const objURL = window.URL.createObjectURL(myFile)
-            const link = document.getElementById("pdfSave")
-            link.setAttribute('href', objURL)
-
-            link.setAttribute('download', fileName)
+          
         }
         
         
