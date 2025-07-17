@@ -97,3 +97,7 @@ button2:hover {
     text-underline: #fff3f3;
     font-weight: bold;
 }
+
+pre {
+    font-family: 'Arial', sans-serif;
+}
