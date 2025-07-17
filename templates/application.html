@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 
+
+
     <style>
         textarea::placeholder{
             font-size: 24px;
@@ -22,27 +24,29 @@
 
 </head>
 <body>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=zvfE8Dm2"></script>
+
 
 <header type = "header" name = "h1">
 
-    <h2> Accraft </h2>
+    <h2> Cilvi </h2>
 
      <headerlinks type = "p">
 
-    <button2 type="button" onclick = "window.location.href = 'about.html'"> About </button2>
-    <button2 type="button" onclick = "window.location.href = 'index.html'"> Home </button2>
+    <button2 type="button" onclick = "window.location.href = '/about'"> About </button2>
+    <button2 type="button" onclick = "window.location.href = '/'"> Home </button2>
 
     </headerlinks>
 
 </header>
 
-<main>
-<div>
+<main style="padding: 10px">
+<div style="padding-top: 75px">
 
      <form action="/application" id="fileForm" method="POST" enctype="multipart/form-data">
          {% csrf_token %}
         <label for="file">Choose a file:</label>
-        <input type="file" id="file" name="file" required accept=".pdf, .txt">
+        <input type="file" id="file" name="file" required accept=".txt">
          <br>
         <button type="submit">Upload</button>
     </form>
@@ -51,17 +55,42 @@
     <br><br>
 
     <div>
-    <label style="font-size:24px "> OR copy and paste the pattern here: </label>
     <form id="textForm" name="textForm">
+        <label for="patternText" style="font-size:24px" > Copy and paste the pattern here:</label>
+        <br>
         <textarea type="text" id="patternText" name="patternText" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
         <br>
-        <button type="submit">Submit</button>
+        
+
+        <br>
+        <button type="submit" aria-label="submit the text to the program"> Generate</button>
     </form>
 
-        <div id="resultLocation">
+        <div>
+            <br>
+            <button onclick="responsiveVoice.speak('The Internet is a series of tubes!');" 
+            type="button" value="Play Audio" style="background-color: black; align-items: center" >Play Audio</button>
+        </div>
+        
+        <section id="resultLocation" class="container" aria-label="Generated result" style="padding-top: 25px">
+            
+            <br>
     <pre id="result"> This is where the results go</pre>
             
+            
+            
+            </section>
+        
+            
+        
+            <div style="padding-top: 10px">
+                <button>Save to .TXT</button>
+                <button>Save to .PDF </button>
+                <button>Save Audio File</button>
             </div>
+        
+        
+       
         
 
     <script type="module">
@@ -74,6 +103,7 @@
                 let output = textarea.value
                 event.preventDefault()
                 changeAndDisplay(output)
+                ttsCheckbox()
                 event.preventDefault()
 
             })
@@ -92,17 +122,19 @@
             let chNum = new RegExp("ch" + "\\d+")
             console.log(chNum)
             output = output.replace(chNum, "chain" + "\$1")
-            
-            
-            
-            
-            
-            
-           
             document.getElementById("result").innerHTML = output;
 
         }
+        
+        
+        
     </script>
+        
+        
+        <script>
+            
+            
+        </script>
     
     
     
@@ -119,6 +151,10 @@
     };
   }
 });
+    
+    
+    
+    
     </script>
 
 
@@ -126,6 +162,13 @@
 </main>
 
 </body>
+
+
+
+
+
+
+
 
 <script>
     crochetDictionary = 
