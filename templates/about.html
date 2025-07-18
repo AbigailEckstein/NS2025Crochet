@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <title>About</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
 
-     {% load static %}
+    <style>
+        *{
+
+            background-image: url("{%  static  'images/backdrop_about.png' %}");
+            back;
+        }
+    </style>
+
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    
     
 </head>
 <body>
 <header type = "header" name = "h1">
 
-    <h2> Accraft </h2>
-    <button2 type="button" > About </button2>
-    <button2 type="button" onclick = "window.location.href = '/'"> Home </button2>
+    <div class = "container">
+
+    <img src = "{%  static  'images/blanket_pattern.png' %}" alt = "blanket pattern" width = 90px>
+    <h2> Cilvi </h2>
+
+</div>
+    <nav>
+    <headerlinks type = "p">
+
+    <button2 type="button"> About</button2>
+     <button2 type="button" onclick = "window.location.href = '/'"> Home </button2>
+
+    </headerlinks>
+    </nav>
 
 </header>
 <main>
