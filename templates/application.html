@@ -100,13 +100,18 @@
     <script type="module">
         let dictionary = crochetDictionary
         
-        //for text input.
-        document.getElementById("textForm").addEventListener("submit", function(event){
-            event.preventDefault()
-                const textarea = document.getElementById("patternText");
+         document.getElementById("textForm").addEventListener("submit", function(event) {
+             event.preventDefault()
+             const textarea = document.getElementById("patternText");
                 let output = textarea.value
+             mainApp(output) //call main function
+         })
+        
+        //for text input.
+        function mainApp(output){
+       
+                
                 let genRes
-                event.preventDefault()
                 if(document.getElementById("abbrevToggler").checked){
                     event.preventDefault()
                     genRes = output
@@ -120,9 +125,10 @@
                     
                 }
 
-            })
+            }
 
         function onSubmit(text){
+            console.log(text)
             document.getElementById("result").innerHTML = text;
             
             tts(text)
@@ -202,43 +208,35 @@
             })
             
             
-            
-            
-          
         }
         
         
+         document.getElementById("fileForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevents page reload
+    const fileInput = document.getElementById("file");
+    const file = fileInput.files[0];
 
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            let text = reader.result
+            mainApp(text)
+        }
+        reader.readAsText(file);
+    }
+    });
+        
     </script>
         
         
-        <script>
-            
-            
-        </script>
+       
     
     
     
 
 
 
-    <script>
-    document.getElementById('fileForm').addEventListener('submit', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-      console.log('File content:', e.target.result);
-    };
-  }
-});
-    
-    
-    
-    
-    </script>
-
-
+        </div>
 </div>
 </main>
 
