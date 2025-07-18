@@ -113,14 +113,12 @@
                 
                 let genRes
                 if(document.getElementById("abbrevToggler").checked){
-                    event.preventDefault()
                     genRes = output
                     onSubmit(genRes)
                     
                 }
                 else {
-                    genRes = changeAndDisplay(output)
-                    event.preventDefault()
+                    genRes = changeAndDisplay(output, dictionary)
                     onSubmit(genRes)
                     
                 }
@@ -137,21 +135,56 @@
 
         }
         
+        function isLetter(char) {
+            return /^[a-zA-Z]$/.test(char);
+            }
+            
+            function isNumber(char) {
+            return /^[0-9]$/.test(char);
+                }
         
-        function changeAndDisplay(output) {
+        
+        function changeAndDisplay(input, dictionary) {
+            var newInput = input.replace(/\n/g, " \n")
+            console.log(newInput)
+            let arrayNWS = newInput.split(" ")
+            for (let i=0; i<arrayNWS.length; i++){
+                let current = arrayNWS[i];
+               
+                
+                let result = "";
+                for (let i = 0; i < current.length - 1; i++) {
+                    let curChar = current[i];
+                    let nextChar = current[i + 1];
+                    result += curChar;
+                    if (
+                        (isLetter(curChar) && isNumber(nextChar)) ||
+                        (isNumber(curChar) && isLetter(nextChar))
+                    ) {
+                        result += " ";
+                    }
+                }
+                result += current[current.length - 1];
+                arrayNWS[i] = result;
+               
+                    
+                    
+                    
+            }
+            
+            input = arrayNWS.join(" ")
             for (const key in dictionary) { //for each abbreviation, check and replace
                 let regex = new RegExp( "\\b" + key + "\\b", 'gi')
-                output = output.replace(regex, dictionary[key])
+                input = input.replace(regex, dictionary[key])
             }
-            //for (let sc=0; i<specialcases.length; i++){
-            //    output = output.replace(specialcases[sc], )
-            //}
             
             
-            let chNum = new RegExp("ch" + "\\d+")
-            console.log(chNum)
-            output = output.replace(chNum, "chain" + "\$1")
-            return output
+            console.log(arrayNWS)
+            
+            
+            
+            
+            return input
         }
 
 
@@ -339,6 +372,10 @@
 "yoh":	"yarn over hook",
     };
     
+    
+    
+    
+    
     let knitDictionary = {
         "alt":	"alternate",
 "approx":	"approximately",
@@ -420,8 +457,7 @@
 "yrn":	"yarn round needle",
     }
     
-    let specialcases = [
-    ]
+    
     
     
 </script>
