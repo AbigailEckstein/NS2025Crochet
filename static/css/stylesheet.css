@@ -2,6 +2,7 @@
 *{
 margin: 0;
     background-color: #fff3f3;
+     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 header {
     z-index: 10;
@@ -26,9 +27,23 @@ header {
 
 img {
     background-color: transparent;
-    float: left;
+}
+
+.overlay-img{
+     position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
 
 }
+
+.image-container {
+      position: relative;
+    width: 100%;
+
+    }
 
 nav{
 
@@ -60,6 +75,17 @@ h3 {
     color: #fff3f3;
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: bold;
+    font-size: 30px;
+}
+
+.h3{
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: transparent;
+    color: #240c09;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 30px;
 }
 
@@ -102,3 +128,6 @@ button2:hover {
 pre {
     font-family: 'Arial', sans-serif;
 }
+
+
+
