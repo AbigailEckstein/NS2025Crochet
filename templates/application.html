@@ -46,53 +46,63 @@
 
 </header>
 
-<main style="padding: 10px">
-<div style="padding-top: 75px">
+
+<main style="padding:25px; padding-top: 125px" >
+    
+        <h1 style="text-align: center">Pattern Formatter</h1>
+
+<flex-container style="padding-top: 25px">
+    
 
      <form action="/application" id="fileForm" method="POST" enctype="multipart/form-data">
          {% csrf_token %}
-        <label for="file">Choose a file:</label>
-        <input type="file" id="file" name="file" required accept=".txt">
+        <label for="file" style="font-size:24px">Choose a file:</label>
+        <input type="file" id="file" name="file" required accept=".txt" style="font-size: 16px">
          <br>
-        <button type="submit">Upload</button>
+        <button type="submit", style="width:25vw">Upload</button>
     </form>
-    </div>
+    </flex-container>
 
-    <br><br>
+    <br>
+    <h1 style="text-align: center">OR</h1>
+    <br>
 
-    <div>
-    <form id="textForm" name="textForm">
+    <flex-container>
+    <form id="textForm" name="textForm" >
         <label for="patternText" style="font-size:24px" > Copy and paste the pattern here:</label>
         <br>
-        <textarea type="text" id="patternText" name="patternText" rows="10" cols="50" title="Form for text input of pattern" placeholder="place pattern here" required></textarea>
+        <textarea type="text" id="patternText" name="patternText" rows="10" cols="40" title="Form for text input of pattern" placeholder="place pattern here" required style="width: 93vw"></textarea>
         <br>
         <input type="checkbox" id="abbrevToggler">
         <label for="abbrevToggler">Abbreviations (Recommended to be off)</label>
-
         <br>
         <button type="submit" aria-label="submit the text to the program"> Generate</button>
     </form>
+    </flex-container>
 
-        <div>
-            <br>
-            <button
-            type="button" value="Play/Stop Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
+        <flex-container style="padding-top: 20px">
+  <div class="box">
+        <section id="resultLocation" class="container" aria-label="Generated result" >
 
-        <section id="resultLocation" class="container" aria-label="Generated result" style="padding-top: 25px">
-
-            <br>
-    <pre id="result"> This is where the results go</pre>
-
+          
+                
+                
+    <pre id="result" style="white-space: pre-wrap; word-break: break-word; font-size:24px"> </pre>
 
 
             </section>
-
-
-
-            <div style="padding-top: 10px">
-                <a id="textSave" href="javascript:void(0);">Save to .TXT</a>
-                <a id="pdfSave" href="javascript:void(0)">Save to .PDF </a>
             </div>
+        </flex-container>
+    <flex-container>
+            <button type="button" value="Play Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
+    </flex-container>
+
+
+            <flex-container style="padding-top: 10px">
+                <a id="textSave" href="javascript:void(0);">Save to .TXT </a>
+                &nbsp&nbsp&nbsp;
+                <a id="pdfSave" href="javascript:void(0)">Save to .PDF </a>
+            </flex-container>
 
 
 
@@ -271,7 +281,6 @@
 
 
         </div>
-</div>
 </main>
 
 </body>
