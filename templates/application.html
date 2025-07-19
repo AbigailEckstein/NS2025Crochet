@@ -36,8 +36,9 @@
 
     <div class = "container">
 
-    <img src = "{%  static  'images/blanket_pattern.png' %}" alt = "blanket pattern" width = 90px>
-    <h2> Cilvi </h2>
+    <a href="/" style="background: transparent"><img src = "{%  static  'images/blanket_pattern.png' %}" alt = "Multicolored Granny square" width = 90px></a>
+    <a href="/" style="background: transparent; text-decoration: none" ><h2> Cilvi </h2></a>
+
 
 </div>
     <nav>
@@ -55,8 +56,24 @@
 <main style="padding:25px; padding-top: 180px; align-items: center" >
     
         <h1 style="text-align: center">Pattern Formatter</h1>
-
+    
+    <br>
+    <flex-container>
+        <label for="dictChooser">Pattern Type:  &nbsp</label>
+        
+    <form id="dictChooser">
+        <input type="radio" id="crochetDict" name="patternType" checked>
+        <label for="crochetDict">Crochet Pattern</label>
+        
+        <input type="radio" id="knitDict" name="patternType">
+        <label for="knitDict">Knitting Pattern</label>
+        
+    </form>
+</flex-container>
+    
 <flex-container style="padding-top: 25px">
+    
+    
     
 
      <form action="/application" id="fileForm" method="POST" enctype="multipart/form-data">
@@ -85,7 +102,17 @@
     </form>
     </flex-container>
 
-        <flex-container style="padding-top: 20px">
+    <br><br>
+    
+    <flex-container style="padding-top: 20px">
+            <button type="button" value="Play Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
+                            &nbsp&nbsp&nbsp;
+
+        <a id="textSave" href="javascript:void(0);" style="color: black">Save to .TXT </a>
+                &nbsp&nbsp&nbsp;
+                <a id="pdfSave" href="javascript:void(0)" style="color: black">Save to .PDF </a>
+    </flex-container>
+        <flex-container style="padding-top: 5px">
   <div class="box">
         <section id="resultLocation" class="container" aria-label="Generated result" >
 
@@ -98,16 +125,10 @@
             </section>
             </div>
         </flex-container>
-    <flex-container>
-            <button type="button" value="Play Audio" style="background-color: black; align-items: center" id="playAudio" >Play Audio</button>
-    </flex-container>
+    
 
 
-            <flex-container style="padding-top: 10px">
-                <a id="textSave" href="javascript:void(0);">Save to .TXT </a>
-                &nbsp&nbsp&nbsp;
-                <a id="pdfSave" href="javascript:void(0)">Save to .PDF </a>
-            </flex-container>
+           
 
 
 
@@ -125,6 +146,13 @@
         
         //for text input.
         function mainApp(output){
+            
+                if (document.getElementById("knitDict").checked){
+                    dictionary = knitDictionary
+                }
+                if (document.getElementById("crochetDict").checked){
+                    dictionary = crochetDictionary
+                }
        
                 
                 let genRes
@@ -247,7 +275,7 @@
                 event.preventDefault()
                 const doc = {
                     content:[
-                        {text: text}
+                        text
                     ],
                     defaultStyle:
                         {fontSize: 24}
@@ -300,6 +328,9 @@
 <script>
     crochetDictionary = 
         {
+            "mm": "millimeter",
+            "yd": "yard",
+            "yards": "yards",
 "alt" : "alternate",
 "approx": "approximately",
   "beg": "begin",
