@@ -5,4 +5,4 @@ making it easier for users to read patterns,
 and for fiber art pattern designers to make instructions that are understandable for more people.
 
 Framework used: Django
-Languages used: HTML, CSS, Javascript
+Languages used: HTML, CSS, Javascript, Python
